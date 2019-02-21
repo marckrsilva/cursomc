@@ -36,8 +36,7 @@ public class CategoriaService {
 	}
 	
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		
+		find(obj.getId());		
 		return repo.save(obj);
 	}
 	
@@ -57,7 +56,7 @@ public class CategoriaService {
 	
 	
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
-		PageRequest pagerequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		PageRequest pagerequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pagerequest);
 	}
 	
